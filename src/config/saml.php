@@ -16,7 +16,7 @@ return array(
     /*
      * The path to the working phpsimplesaml install
      */
-    'sp_path' => "/var/simplesamlphp",
+    'sp_name' => env("SP_NAME", "default_sp"),
 
     /*
      * The service provider name
