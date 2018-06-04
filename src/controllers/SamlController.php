@@ -1,8 +1,9 @@
 <?php
 
 use KnightSwarm\LaravelSaml\Account;
+use App\Http\Controllers\Controller;
 
-class SamlController extends BaseController {
+class SamlController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ class SamlController extends BaseController {
 
     private $act;
 
-    public function __construct(KnightSwarm\LaravelSaml\Account $act)
+    public function __construct(Account $act)
     {
         $this->account = $act;
     }
