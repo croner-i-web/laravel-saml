@@ -1,11 +1,11 @@
 <?php namespace KnightSwarm\LaravelSaml;
 
 
-use \Saml;
-use \User;
-use \Auth;
-use \Cookie;
-use \Config;
+use Saml;
+use Auth;
+use Cookie;
+use Config;
+use App\Models\User;
 
 class Account {
 
