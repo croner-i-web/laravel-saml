@@ -2,7 +2,7 @@
 
 
 use \Saml;
-use \User;
+use \App\Models\User;
 use \Auth;
 use \Cookie;
 use \Config;
