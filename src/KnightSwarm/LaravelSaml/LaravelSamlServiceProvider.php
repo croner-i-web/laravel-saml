@@ -20,7 +20,10 @@ class LaravelSamlServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('knight-swarm/laravel-saml');
+        $this->publishes([
+            __DIR__.'/../../config/saml.php' => config_path('saml.php'),
+        ]);
+
         include __DIR__.'/../../routes.php';
     }
 
