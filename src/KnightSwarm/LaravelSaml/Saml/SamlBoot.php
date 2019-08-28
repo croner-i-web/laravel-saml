@@ -23,7 +23,7 @@ class SamlBoot {
 
     protected function setupSimpleSaml()
     {
-        $this->path = Config::get('saml.sp_path');
+        $this->path = Config::get('laravel-saml.saml.sp_path');
         $this->sp   = $this->sp_resolver;
 
         require_once($this->path.'/lib/_autoload.php');
