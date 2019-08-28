@@ -10,11 +10,11 @@ use App\Models\User;
 class Account {
 
     protected function getUserIdProperty() {
-        return Config::get('laravel-saml::saml.internal_id_property', 'email');
+        return Config::get('laravel-saml.saml.internal_id_property', 'email');
     }
 
     protected function getSamlIdProperty() {
-        return Config::get('laravel-saml::saml.saml_id_property', 'email');
+        return Config::get('laravel-saml.saml.saml_id_property', 'email');
     }
     /**
      * Check if the id exists in the specified user property.
@@ -73,7 +73,7 @@ class Account {
      */
     protected function fillUserDetails($user)
     {
-         $mappings = Config::get('laravel-saml::saml.object_mappings',[]);
+         $mappings = Config::get('laravel-saml.saml.object_mappings',[]);
          foreach($mappings as $key => $mapping)
          {
              $user->{$key} = $this->getSamlAttribute($mapping);

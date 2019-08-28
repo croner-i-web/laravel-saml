@@ -39,11 +39,11 @@ class SamlController extends Controller {
         if ($this->account->samlLogged()) {
             $id = $this->account->getSamlUniqueIdentifier();
             if (!$this->account->IdExists($id)) {
-                if (Config::get('laravel-saml::saml.can_create', true)) {
+                if (Config::get('laravel-saml.saml.can_create', true)) {
                     $this->account->createUser();
                 }
                 else {
-                    return Response::make(Config::get('laravel-saml::saml.can_create_error'),400);
+                    return Response::make(Config::get('laravel-saml.saml.can_create_error'),400);
                 }
             } else {
                 if (!$this->account->laravelLogged()) {
@@ -64,7 +64,7 @@ class SamlController extends Controller {
     public function logout()
     {
         $auth_cookie = $this->account->logout();
-		return Redirect::to(Config::get('laravel-saml::saml.logout_target', 'http://'.$_SERVER['SERVER_NAME']))->withCookie($auth_cookie);
+		return Redirect::to(Config::get('laravel-saml.saml.logout_target', 'http://'.$_SERVER['SERVER_NAME']))->withCookie($auth_cookie);
     }
 
 }
