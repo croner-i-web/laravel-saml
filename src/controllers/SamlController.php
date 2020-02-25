@@ -1,8 +1,9 @@
 <?php
 
 use KnightSwarm\LaravelSaml\Account;
+use App\Http\Controllers\Controller;
 
-class SamlController extends BaseController {
+class SamlController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ class SamlController extends BaseController {
 
     private $act;
 
-    public function __construct(KnightSwarm\LaravelSaml\Account $act)
+    public function __construct(Account $act)
     {
         $this->account = $act;
     }
@@ -38,11 +39,11 @@ class SamlController extends BaseController {
         if ($this->account->samlLogged()) {
             $id = $this->account->getSamlUniqueIdentifier();
             if (!$this->account->IdExists($id)) {
-                if (Config::get('laravel-saml::saml.can_create', true)) {
+                if (Config::get('saml.can_create', true)) {
                     $this->account->createUser();
                 }
                 else {
-                    return Response::make(Config::get('laravel-saml::saml.can_create_error'),400);
+                    return Response::make(Config::get('saml.can_create_error'),400);
                 }
             } else {
                 if (!$this->account->laravelLogged()) {
@@ -63,7 +64,7 @@ class SamlController extends BaseController {
     public function logout()
     {
         $auth_cookie = $this->account->logout();
-		return Redirect::to(Config::get('laravel-saml::saml.logout_target', 'http://'.$_SERVER['SERVER_NAME']))->withCookie($auth_cookie);
+		return Redirect::to(Config::get('saml.logout_target', 'http://'.$_SERVER['SERVER_NAME']))->withCookie($auth_cookie);
     }
 
 }
