@@ -28,7 +28,7 @@ class SamlBoot {
 
         require_once($this->path.'/lib/_autoload.php');
 
-        return new \SimpleSAML_Auth_Simple($this->sp);
+        return new \SimpleSAML\Auth\Simple($this->sp);
     }
 
 
