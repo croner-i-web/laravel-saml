@@ -2,6 +2,7 @@
 
 use KnightSwarm\LaravelSaml\Account;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class SamlController extends Controller {
 
