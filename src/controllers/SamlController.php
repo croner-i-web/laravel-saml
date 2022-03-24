@@ -2,7 +2,7 @@
 
 use KnightSwarm\LaravelSaml\Account;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 
 class SamlController extends Controller {
 
@@ -22,11 +22,11 @@ class SamlController extends Controller {
         $this->account = $act;
     }
 
-	public function login()
+	public function login(Request $request)
 	{
-        if (Input::has('url')) {
+        if ($request->has('url')) {
             // only allow local urls as redirect destinations
-            $url = Input::get('url');
+            $url = $request->get('url');
             if (!preg_match("~^(//|[^/]+:)~", $url)) {
                 Session::flash('url.intended', $url);
             }
