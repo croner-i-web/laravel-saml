@@ -42,7 +42,7 @@ class Account {
         if ($this->IdExists($id)) {
             $property = $this->getUserIdProperty();
             $userid = (int)User::where($property, "=", $id)->take(1)->get()[0]->id;
-            Auth::login(User::find($userid));
+            Auth::login(User::find($userid), true);
         }
     }
 
